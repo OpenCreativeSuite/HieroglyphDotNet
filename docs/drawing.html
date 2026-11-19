@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Drawing — Hieroglyph.NET Guide</title>
+    <meta name="description" content="How to draw glyphs in Hieroglyph.NET: the brush, the pen, node editing, metric guides, sidebearings and the character browser.">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="topbar">
+    <div class="topbar-inner">
+        <a class="brand" href="index.html">
+            <span class="brand-mark"><span class="bar"></span><span class="dot"></span></span>
+            Hieroglyph.NET Guide
+        </a>
+        <nav class="mainnav">
+            <a href="index.html">Home</a>
+            <a class="active" href="drawing.html">Drawing</a>
+            <a href="typography.html">Typography</a>
+            <a href="exporting.html">Exporting</a>
+            <a href="shortcuts.html">Shortcuts</a>
+            <a href="https://github.com/OpenCreativeSuite/HieroglyphDotNet">GitHub</a>
+        </nav>
+    </div>
+</header>
+
+<main>
+    <div class="pagehead">
+        <h1>Drawing a glyph</h1>
+        <p>One character at a time. The canvas is an em square with the guides a typeface needs, and two ways to get ink into it.</p>
+    </div>
+
+    <div class="toc">
+        <strong>On this page</strong>
+        <ol>
+            <li><a href="#canvas">The canvas and its guides</a></li>
+            <li><a href="#brush">The brush</a></li>
+            <li><a href="#pen">The pen</a></li>
+            <li><a href="#nodes">Editing points</a></li>
+            <li><a href="#spacing">Advance width and sidebearings</a></li>
+            <li><a href="#browser">The character browser</a></li>
+            <li><a href="#templates">Templates and duplication</a></li>
+            <li><a href="#metrics">Font-wide metrics</a></li>
+        </ol>
+    </div>
+
+    <section id="canvas">
+        <h2>The canvas and its guides</h2>
+        <p>Every glyph is drawn in font units, with the baseline at <code>0</code> and the em square <code>1000</code> units tall by default. The pale panel is the glyph cell; the orange verticals are the origin and the advance width.</p>
+        <figure>
+            <img src="screenshots/main.png" alt="The glyph editor with an A selected, anchors and handles visible">
+            <figcaption>Anchors are squares; a selected point's handles are joined by orange lines. The advance chip at the baseline can be dragged.</figcaption>
+        </figure>
+        <ul>
+            <li><strong>Baseline</strong> — the line every letter sits on.</li>
+            <li><strong>x-height</strong> — the top of flat lowercase letters such as <em>n</em> and <em>o</em>.</li>
+            <li><strong>Cap height</strong> — the top of flat capitals.</li>
+            <li><strong>Ascender and descender</strong> — the line box used by text layout.</li>
+            <li><strong>Grid</strong> — a 50-unit design grid, dimmed automatically as you zoom out.</li>
+        </ul>
+        <p>The grid, metric guides and sidebearing guides are toggled from the toolbar or the tool rail. Zoom with the wheel or <kbd>Ctrl</kbd>+<kbd>=</kbd>/<kbd>-</kbd>; fit the glyph with <kbd>Ctrl</kbd>+<kbd>0</kbd>; pan with a middle-drag or the hand tool.</p>
+    </section>
+
+    <section id="brush">
+        <h2>The brush</h2>
+        <p>Press <kbd>B</kbd> and drag. That is the whole workflow. The stroke follows the pointer, and on release it becomes one closed, smooth outline you can edit like any other shape.</p>
+        <figure>
+            <img src="screenshots/brush.png" alt="A live freehand brush stroke on the ampersand with the brush size control">
+            <figcaption>The live stroke is previewed exactly as it will be committed. The ring shows the brush width at the pointer.</figcaption>
+        </figure>
+        <ul>
+            <li><strong>Width</strong> — set the brush size in font units in the glyph bar, or use the − and + buttons. The default is 78 units, about the stem of a regular weight.</li>
+            <li><strong>A single click</strong> makes a round dot.</li>
+            <li><strong>Several strokes</strong> accumulate on the same character; overlapping strokes merge visually.</li>
+            <li><strong>Smoothing</strong> — the pointer path is simplified and smoothed before it is offset, so the result is a clean outline with tens of points rather than hundreds.</li>
+            <li><strong>Undo</strong> — each stroke is one undo step.</li>
+        </ul>
+        <div class="tip">
+            <strong>Good first letters</strong>
+            <em>l</em>, <em>i</em>, <em>o</em> and <em>n</em> teach you the most about width and spacing. Draw them before the harder letters.
+        </div>
+    </section>
+
+    <section id="pen">
+        <h2>The pen</h2>
+        <p>The pen builds a contour point by point and is the tool for deliberate curves.</p>
+        <ol>
+            <li>Press <kbd>P</kbd>.</li>
+            <li><strong>Click</strong> to place a corner point.</li>
+            <li><strong>Click and drag</strong> to place a smooth point and pull its two handles out together.</li>
+            <li>Keep clicking to extend the contour.</li>
+            <li><strong>Click the first point</strong> to close the contour, or press <kbd>Enter</kbd> or <kbd>Escape</kbd> to leave it open.</li>
+        </ol>
+        <p>An open contour is shown and filled as if closed, and is reported as a warning when you export. A dashed line follows the pointer from the last point so you can see where the next segment will go.</p>
+    </section>
+
+    <section id="nodes">
+        <h2>Editing points</h2>
+        <p>Press <kbd>A</kbd> for the node tool.</p>
+        <table>
+            <thead><tr><th>You want to…</th><th>Do this</th></tr></thead>
+            <tbody>
+                <tr><td>Select a point</td><td>Click it. Shift-click adds more points in the same contour.</td></tr>
+                <tr><td>Move points</td><td>Drag any selected point, or nudge with the arrow keys (10 units, or 1 with <kbd>Shift</kbd>).</td></tr>
+                <tr><td>Move in one direction</td><td>Hold <kbd>Shift</kbd> while dragging.</td></tr>
+                <tr><td>Shape a curve</td><td>Drag a round handle. Smooth points mirror the opposite handle automatically.</td></tr>
+                <tr><td>Break a smooth point</td><td>Hold <kbd>Alt</kbd> while dragging a handle; the two handles move independently.</td></tr>
+                <tr><td>Select many points</td><td>Drag a marquee on empty canvas.</td></tr>
+                <tr><td>Delete points</td><td>Select them and press <kbd>Delete</kbd>.</td></tr>
+                <tr><td>Make a point smooth or sharp</td><td>Use the point controls in the inspector, or double the handles by hand.</td></tr>
+            </tbody>
+        </table>
+        <p>With the selection tool (<kbd>V</kbd>), dragging moves the whole character. Clicking a point switches you to node editing, which is what most people mean when they click a corner.</p>
+        <div class="note">
+            <strong>Fewer points, better letters</strong>
+            A letter usually needs fewer points than you expect. If an outline feels lumpy, try removing points rather than adding them.
+        </div>
+    </section>
+
+    <section id="spacing">
+        <h2>Advance width and sidebearings</h2>
+        <p>Spacing matters as much as shape. Three numbers describe it:</p>
+        <ul>
+            <li><strong>Advance width</strong> — how far the pen moves after this character. Editable in the inspector or by dragging the orange line at the baseline.</li>
+            <li><strong>Left sidebearing</strong> — the gap from the origin to the leftmost ink.</li>
+            <li><strong>Right sidebearing</strong> — the gap from the rightmost ink to the advance.</li>
+        </ul>
+        <p>The canvas shades the two sidebearing zones so uneven spacing is visible at a glance. Editing the left sidebearing slides the outline; editing the right one changes the advance.</p>
+        <div class="tip">
+            <strong>Spacing rhythm</strong>
+            Compare <em>n</em>, <em>o</em> and <em>H</em> side by side. If the gaps between stems look even, the rest of the alphabet becomes much easier.
+        </div>
+    </section>
+
+    <section id="browser">
+        <h2>The character browser</h2>
+        <p>The left column lists every character in the font with a live miniature and an orange dot once it has an outline.</p>
+        <ul>
+            <li><strong>Search</strong> by character, name or code point — try <code>A</code>, <code>Ampersand</code> or <code>0026</code>.</li>
+            <li><strong>Filter</strong> by Uppercase, Lowercase, Numbers, Punctuation, Symbols or Custom. Each chip shows its completion count.</li>
+            <li><strong>Only unfinished</strong> — the eye button hides everything already drawn.</li>
+            <li><strong>Add character</strong> — type any character or code point (é, €, U+2192) to add it to the font.</li>
+            <li><strong>Step through</strong> with <kbd>[</kbd> and <kbd>]</kbd>, or <kbd>PageUp</kbd> and <kbd>PageDown</kbd>.</li>
+        </ul>
+    </section>
+
+    <section id="templates">
+        <h2>Templates and duplication</h2>
+        <p>Most typefaces begin by copying a related shape. Press <kbd>Ctrl</kbd>+<kbd>D</kbd>, or use <strong>Edit → Duplicate Character…</strong>, then pick a target character. The outline and advance width are copied and become completely independent.</p>
+        <figure>
+            <img src="screenshots/duplicate.png" alt="The copy-character dialog listing empty characters">
+            <figcaption>Only empty characters are listed by default; switch to “All characters” to overwrite an existing one.</figcaption>
+        </figure>
+        <p>Good starting pairs: <em>O</em> → <em>o</em>, <em>I</em> → <em>l</em> → <em>1</em>, <em>H</em> → <em>n</em>, <em>E</em> → <em>F</em>. A blank character also offers starter shapes — an ellipse, a rectangle, a stem — and the brush.</p>
+    </section>
+
+    <section id="metrics">
+        <h2>Font-wide metrics</h2>
+        <p>The Metrics panel on the right controls the guides shared by every character in the style.</p>
+        <table>
+            <thead><tr><th>Metric</th><th>What it does</th></tr></thead>
+            <tbody>
+                <tr><td>Units per em</td><td>The design grid. Changing it rescales every outline, advance and kerning value, so the drawing stays proportionally identical.</td></tr>
+                <tr><td>Ascender / descender</td><td>The line box used by text layout and the font's typographic metrics.</td></tr>
+                <tr><td>Cap height / x-height</td><td>Where the guide lines are drawn, and what is written to the font's metadata.</td></tr>
+                <tr><td>Line gap</td><td>Extra space between lines.</td></tr>
+            </tbody>
+        </table>
+        <p>“Reset guides” returns to the 1000-unit defaults without touching any outline.</p>
+    </section>
+
+    <div class="pager">
+        <a href="index.html">← Home</a>
+        <a href="typography.html">Typography →</a>
+    </div>
+</main>
+
+<footer>
+    Hieroglyph.NET is part of the <a href="https://github.com/OpenCreativeSuite">Open Creative Suite</a>. Free for personal and commercial use.
+</footer>
+</body>
+</html>

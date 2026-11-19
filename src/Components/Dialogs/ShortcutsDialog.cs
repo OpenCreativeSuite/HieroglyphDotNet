@@ -20,7 +20,7 @@ internal sealed class ShortcutsDialog : Component
         ("Ctrl+= / Ctrl+-", "Zoom in and out"),
         ("Wheel", "Zoom around the pointer"),
         ("[ / ]", "Previous and next character"),
-        ("Space-drag", "Pan with any tool"),
+        ("Middle-drag", "Pan with any tool"),
     ];
 
     private static readonly (string Key, string Action)[] Editing =

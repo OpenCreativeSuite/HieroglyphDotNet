@@ -1,88 +1,142 @@
 # Hieroglyph.NET
 
-A typeface design application for the [Open Creative Suite](https://github.com/barely-sentient) — built for people who have never made a font before, without taking shortcuts that experienced designers will notice.
+**A free, source-available typeface design application for the Open Creative Suite.** Draw a character for each letter, preview the alphabet, export a real font and install it — without an account, a subscription, a cloud upload or any font-engineering knowledge.
 
-Draw a character, watch the alphabet come together, export a real font file, install it, and start typing with it. Everything stays on your machine.
+[![Download the latest release](https://img.shields.io/github/v/release/OpenCreativeSuite/HieroglyphDotNet?label=Download&style=for-the-badge)](https://github.com/OpenCreativeSuite/HieroglyphDotNet/releases/latest)
+[![Read the user guide](https://img.shields.io/badge/Read-the%20guide-ff8a3d?style=for-the-badge)](https://opencreativesuite.github.io/HieroglyphDotNet/)
 
-## The workflow
+![The Hieroglyph.NET main window with a glyph being edited, the character browser, inspector and live preview](docs/screenshots/main.png)
 
-1. **Create a font** — give it a family name, or start from the included *Occam* starter typeface and reshape it.
-2. **Pick a character** from the browser on the left. Every letter, digit and mark is listed with a live miniature and a completion dot.
-3. **Draw it** — drag with the **brush** for a freehand stroke that becomes a smooth, editable outline, place precise curves with the **pen**, or start from an ellipse, rectangle or another character.
-4. **Shape it** — drag anchors and Bézier handles, nudge with the arrow keys, flip, centre, adjust the advance width and sidebearings.
-5. **Preview** — the dock at the bottom renders real text in your developing typeface as you edit.
-6. **Export** — validate, then write TTF, OTF, WOFF or WOFF2. Install straight into the system font collection on Windows.
+## Typeface design that feels like drawing
 
-## Features
+Hieroglyph.NET is built around the workflow people actually follow: pick a character, shape it, look at the alphabet, export. The interface is a calm, dark workspace — a character browser, a focused tool rail, a large em square, a contextual inspector and a preview dock that renders your developing typeface as you work.
 
-- **Brush** — freehand paint that is simplified, smoothed and offset into one editable closed contour.
-- **Pen and node editing** — cubic curves, mirrored handles, corner/smooth points, multi-node marquee selection.
-- **Real metrics** — units per em, ascender, descender, cap height, x-height, advance width and sidebearings, drawn as guides on the canvas.
-- **Kerning editor** — visual pair preview, suggested pairs, numeric fine-tuning; written to both a legacy `kern` table and a GPOS pair-positioning lookup.
-- **Live preview dock** — sample text, alphabet and kerning tabs with size, tracking and leading controls, on paper or charcoal.
-- **Specimen viewer** — a presentation sheet showing large glyphs, a paragraph, the full alphabet and the metrics.
-- **Styles** — several weights/widths per family, each with its own outlines.
-- **Project files** — a plain `.hgl` JSON document you own and can inspect.
-- **Font compilation from scratch** — TrueType quadratic outlines, CFF Type 2 charstrings, cmap formats 4 and 12, name, OS/2, hmtx, post, `kern` and GPOS.
+- **The brush draws like a brush.** Drag freely and the stroke becomes one smooth, closed, editable outline. No clicking point by point.
+- **The pen is there when you want it.** Cubic Bézier anchors, mirrored handles, marquee selection and precise nudging.
+- **Spacing is part of the design.** Advance width, sidebearings and kerning are visible on the canvas and editable in the inspector.
+- **Real font files.** TrueType, CFF, kerning tables and web-font containers are compiled from your outlines inside the application.
+- **Local by design.** Projects are plain `.hgl` JSON files. Fonts are ordinary files. Nothing is uploaded anywhere.
+- **Every feature included.** No paid tier, no watermark, no account.
 
-## Export formats
+## What you can do with it
 
-| Format | Outlines | Use |
-| --- | --- | --- |
-| TTF | TrueType (quadratic) | Installing on any computer |
-| OTF | CFF (cubic) | Design software, print workflows |
-| WOFF | TrueType, zlib | Older websites |
-| WOFF2 | CFF, Brotli | Modern websites |
+### Draw each character
 
-Blank characters are skipped rather than blocking the export; the validation list explains what is unfinished in plain language.
+A blank character offers a brush, a pen, an ellipse, a rectangle and a stem — or copy a character you have already drawn. Millimetre-precise work is possible; so is a quick freehand alphabet in an afternoon.
 
-## Keyboard
+### Shape the outline
 
-| Key | Action |
+Drag anchors and handles, add and delete points, make a point smooth or sharp, constrain a move with Shift, nudge with the arrow keys, flip, centre and clear. Multiple contours and open contours are supported, and overlapping shapes merge cleanly.
+
+### Control the metrics
+
+Baseline, x-height, cap height, ascender and descender are drawn on the canvas. The advance width is a draggable orange line; the sidebearing zones are shaded so uneven spacing is obvious. A whole font can be rescaled by changing units per em without redrawing anything.
+
+### Build the alphabet
+
+The character browser lists every letter, number, mark and symbol with a live miniature and a completion dot. Search by character, name or code point, filter by category, hide finished characters, and add any Unicode character — é, €, ←, ★.
+
+### Space it properly
+
+A visual kerning editor previews any pair at a large size, nudges by five units, and suggests AV, VA, WA, AW, To, Ta, Yo and LT. Kerning is written to both a legacy `kern` table and an OpenType `GPOS` lookup.
+
+### Preview and present
+
+The preview dock renders real text, the full alphabet and kerning pairs with adjustable size, tracking, leading and ink colour. The specimen viewer presents the typeface at several sizes with a custom sample line.
+
+### Export and install
+
+TTF, OTF, WOFF and WOFF2, with a plain-language validation report. On Windows the font can be installed for the current user in one click. Install it, open any text application, and type.
+
+## Made for everyday jobs
+
+| I want to… | Hieroglyph.NET can |
 | --- | --- |
-| `V` / `A` | Selection / node editing |
-| `P` | Pen |
-| `B` | Brush |
-| `H` / `Z` | Hand / zoom |
-| `[` / `]` | Previous / next character |
-| `Ctrl+Z` / `Ctrl+Y` | Undo / redo |
-| `Ctrl+C` / `Ctrl+V` | Copy / paste a character |
-| `Ctrl+D` | Copy a character to another code point |
-| `Ctrl+E` | Export |
-| `Ctrl+S` | Save the project |
-| `Delete` | Delete selected points |
-| `Escape` | End a stroke, then deselect |
-| Arrows | Nudge 10 units (Shift: 1) |
-| Wheel | Zoom around the pointer |
+| Make my first font | Start from the included *Occam* typeface or a blank sheet with all standard characters ready |
+| Draw a letter quickly | Brush (<kbd>B</kbd>), then reshape the resulting outline point by point |
+| Keep a curve exact | Pen (<kbd>P</kbd>) and node editing (<kbd>A</kbd>) with mirrored Bézier handles |
+| Turn O into o | **Edit → Duplicate Character…** copies the outline and advance to another code point |
+| Add accented characters | **Add character** accepts any character or Unicode code point |
+| Fix AV and To | The kerning panel previews the pair and stores the adjustment |
+| See the whole typeface | Text, alphabet and kerning previews, plus the specimen viewer |
+| Install my font | **Export → Install font** on Windows; no administrator rights needed |
+| Keep my work | Projects are readable `.hgl` JSON files you own |
 
-## Building
+## A look around
 
-Requires the .NET 10 SDK.
+| Brush | Blank character | Preview dock |
+| --- | --- | --- |
+| ![A freehand brush stroke](docs/screenshots/brush.png) | ![The starter card on a blank character](docs/screenshots/starter.png) | ![The alphabet preview tab](docs/screenshots/alphabet.png) |
+| A live stroke that becomes an editable outline. | Brush, pen, starter shapes or a template. | Real text with size, tracking and leading. |
+
+| Kerning | Specimen | Export |
+| --- | --- | --- |
+| ![Kerning pairs in the preview dock](docs/screenshots/kerning.png) | ![The specimen sheet](docs/screenshots/specimen.png) | ![The export dialog](docs/screenshots/export.png) |
+| Pairs previewed with their adjustments applied. | Large glyphs, a paragraph and the metrics. | Four formats and a friendly validation report. |
+
+## Get started in a minute
+
+1. **Download a build for your computer.** Windows, Linux and macOS builds are attached to the [latest release](https://github.com/OpenCreativeSuite/HieroglyphDotNet/releases/latest). Unzip it and run `HieroglyphDotNet` (`HieroglyphDotNet.exe` on Windows). There is no installer.
+2. **Create a font.** Choose **File → New Font…**, give it a name, and pick “Starter outlines” if you want a complete alphabet to reshape.
+3. **Draw a letter.** Pick a character in the browser, press <kbd>B</kbd> and drag, or press <kbd>P</kbd> and click to place points.
+4. **Shape it.** Press <kbd>A</kbd> and drag anchors or handles. The arrows nudge; <kbd>Shift</kbd> constrains.
+5. **Preview.** Type in the dock at the bottom and watch the alphabet fill in.
+6. **Export.** Press <kbd>Ctrl</kbd>+<kbd>E</kbd>, choose TTF, pick a folder and install it.
+
+## Run from source
+
+You need the [.NET 10 SDK](https://dotnet.microsoft.com/download).
 
 ```sh
 dotnet run
 ```
 
-The desktop host also accepts `--screenshot <path>` for a headless frame capture.
+Or start the built `HieroglyphDotNet` executable from `bin/`. The desktop host also accepts `--screenshot <path>` for a headless frame capture.
+
+## Licence
+
+Hieroglyph.NET is free for personal and commercial use, including internal business use. The source is available under the **Apache License 2.0 with the Commons Clause**: you can use, modify and share it, but you may not sell the software itself or a product whose value derives substantially from it. **The typefaces you make are yours** — export them, use them and sell them.
+
+See [LICENSE.md](LICENSE.md) for the full terms and a plain-English summary.
+
+## Learn the app
+
+The illustrated guide lives in [`docs/`](docs/index.html) and is published at:
+
+**https://opencreativesuite.github.io/HieroglyphDotNet/**
+
+It covers drawing, typography and previews, exporting and installing, the full shortcut list, and how to build from source.
 
 ## Project layout
 
 ```
 Program.cs                     application root and overlay stack
-src/Core/                      documents, geometry, editing, export
-  Glyph.cs, FontProject.cs     the data model
-  FontEditor*.cs               session, tools, input, files, commands
-  GlyphRasterizer.cs           antialiased scanline rasteriser
+src/Core/                      documents, geometry, editing, font compilation
+  Glyph.cs, FontProject.cs     characters, contours, metrics, styles
+  FontEditor*.cs               session, tools, input, files and commands
+  GlyphRasterizer.cs           antialiased scanline rasteriser for previews
   StrokeOutline.cs             freehand brush → editable outline
   TrueTypeOutlines.cs          cubic → quadratic conversion
-  CffTable.cs                  Type 2 charstrings and CFF container
+  CffTable.cs                  Type 2 charstrings and the CFF container
   OpenTypeTables.cs            cmap, name, OS/2, hhea, head, maxp, post, kern, GPOS
   SfntBuilder.cs               sfnt, WOFF and WOFF2 containers
-  DemoFont.cs                  the starter typeface
+  DemoFont.cs                  the Occam starter typeface
 src/Components/                chrome, browser, canvas, inspector, preview, dialogs
 src/Components/App/App.css     the entire visual identity
+docs/                          user guide and screenshots
+.github/workflows/             GitHub Pages and cross-platform release builds
 ```
 
-## Licence
+The font compiler and the glyph model are independent of the UI. Glyph rendering uses a custom anti-aliased scanline rasteriser, and export writes every table the formats need from the same outlines the editor draws.
 
-Part of the Open Creative Suite. Data sovereignty: no accounts, no cloud, no telemetry.
+## Free and private
+
+Hieroglyph.NET is free to use and will stay free. There is no paid version, subscription, account, advertising or telemetry. Projects and exported fonts are read and written on your computer. No font service, cloud upload or external account is involved at any point.
+
+## Project links
+
+- [Latest release](https://github.com/OpenCreativeSuite/HieroglyphDotNet/releases/latest)
+- [User guide](https://opencreativesuite.github.io/HieroglyphDotNet/)
+- [Documentation source](docs/)
+- [Website workflow](.github/workflows/pages.yml) and [release workflow](.github/workflows/release.yml)
+- [Report an issue](https://github.com/OpenCreativeSuite/HieroglyphDotNet/issues)

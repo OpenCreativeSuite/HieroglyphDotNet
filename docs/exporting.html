@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Exporting — Hieroglyph.NET Guide</title>
+    <meta name="description" content="Export Hieroglyph.NET projects as TTF, OTF, WOFF or WOFF2, install the font, and understand the validation report.">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="topbar">
+    <div class="topbar-inner">
+        <a class="brand" href="index.html">
+            <span class="brand-mark"><span class="bar"></span><span class="dot"></span></span>
+            Hieroglyph.NET Guide
+        </a>
+        <nav class="mainnav">
+            <a href="index.html">Home</a>
+            <a href="drawing.html">Drawing</a>
+            <a href="typography.html">Typography</a>
+            <a class="active" href="exporting.html">Exporting</a>
+            <a href="shortcuts.html">Shortcuts</a>
+            <a href="https://github.com/OpenCreativeSuite/HieroglyphDotNet">GitHub</a>
+        </nav>
+    </div>
+</header>
+
+<main>
+    <div class="pagehead">
+        <h1>Exporting and installing</h1>
+        <p>Export is not a technical afterthought. It checks the font, explains anything unfinished in plain language, compiles the outlines and lets you install the result immediately.</p>
+    </div>
+
+    <div class="toc">
+        <strong>On this page</strong>
+        <ol>
+            <li><a href="#flow">The export flow</a></li>
+            <li><a href="#formats">Formats</a></li>
+            <li><a href="#validation">The validation report</a></li>
+            <li><a href="#install">Installing the font</a></li>
+            <li><a href="#project">Project files</a></li>
+            <li><a href="#styles">Several styles in one family</a></li>
+        </ol>
+    </div>
+
+    <section id="flow">
+        <h2>The export flow</h2>
+        <ol class="steps">
+            <li><strong>Press <kbd>Ctrl</kbd>+<kbd>E</kbd></strong> or click <strong>Export</strong> in the toolbar.</li>
+            <li><strong>Choose a format.</strong> TTF is the safe default for installing; WOFF2 is the smallest for the web.</li>
+            <li><strong>Read the checks.</strong> Warnings describe unfinished characters and spacing; they do not stop you.</li>
+            <li><strong>Choose a folder and name</strong> in the in-app file browser.</li>
+            <li><strong>Install or preview.</strong> The success panel offers Install font, Show in folder and Open specimen.</li>
+        </ol>
+        <figure>
+            <img src="screenshots/export.png" alt="The export dialog showing four format cards and a validation list">
+            <figcaption>Four formats, the current style, a file name and a plain-language validation report.</figcaption>
+        </figure>
+    </section>
+
+    <section id="formats">
+        <h2>Formats</h2>
+        <table>
+            <thead><tr><th>Format</th><th>Outlines</th><th>Container</th><th>Best for</th></tr></thead>
+            <tbody>
+                <tr><td><strong>TTF</strong></td><td>TrueType (quadratic)</td><td>sfnt</td><td>Installing on any computer</td></tr>
+                <tr><td><strong>OTF</strong></td><td>CFF (cubic)</td><td>OpenType</td><td>Design software and print workflows</td></tr>
+                <tr><td><strong>WOFF</strong></td><td>TrueType</td><td>zlib-compressed sfnt</td><td>Websites and older browsers</td></tr>
+                <tr><td><strong>WOFF2</strong></td><td>CFF</td><td>Brotli-compressed sfnt</td><td>Modern websites</td></tr>
+            </tbody>
+        </table>
+        <p>All four are compiled from your outlines in the application. The TTF and OTF paths use different curve representations — cubic outlines are converted to quadratic curves for TrueType, and written directly as Type 2 charstrings for the CFF container.</p>
+        <p>Every export also writes the tables text software expects: character mapping (<code>cmap</code> formats 4 and 12), family and style names, OS/2 weight and width classes, horizontal metrics, and the vertical metrics from the Metrics panel.</p>
+    </section>
+
+    <section id="validation">
+        <h2>The validation report</h2>
+        <p>The checks appear before the save browser opens. They are written for people, not font engineers:</p>
+        <table>
+            <thead><tr><th>Report</th><th>Meaning</th></tr></thead>
+            <tbody>
+                <tr><td>“54 characters are still blank.”</td><td>Those characters are skipped in the font. Nothing is broken.</td></tr>
+                <tr><td>“Some outlines extend past their advance width.”</td><td>The character may touch the next one. Widen the advance or move the outline.</td></tr>
+                <tr><td>“Some characters have no advance width.”</td><td>The next letter would overlap. Set a width in the inspector.</td></tr>
+                <tr><td>“1 character has an open contour.”</td><td>Open contours are treated as closed when compiled.</td></tr>
+                <tr><td>“42 kerning pairs will be included.”</td><td>Information, not a problem.</td></tr>
+                <tr><td>A red error</td><td>The font cannot be compiled yet — for example a missing family name or no drawn characters at all.</td></tr>
+            </tbody>
+        </table>
+        <div class="note">
+            <strong>Incomplete is allowed</strong>
+            A font with only a dozen letters is still a working font. Export early, install it, type with it and see what needs work.
+        </div>
+    </section>
+
+    <section id="install">
+        <h2>Installing the font</h2>
+        <p>On Windows, <strong>Install font</strong> copies the exported file into your personal font folder and registers it for the current user. No administrator rights are needed, and the new family is available to applications the next time they start.</p>
+        <ul>
+            <li>Install works for <code>.ttf</code> and <code>.otf</code>.</li>
+            <li>Web fonts (<code>.woff</code>, <code>.woff2</code>) cannot be installed; export TTF or OTF to install this typeface.</li>
+            <li>On other systems, use <strong>Show in folder</strong> and your platform's font tool.</li>
+        </ul>
+        <p>After installing, open the specimen viewer or any text application to see the font in use. Re-export and install again after changes; the new file replaces the old one.</p>
+    </section>
+
+    <section id="project">
+        <h2>Project files</h2>
+        <p><strong>Save Project</strong> writes a <code>.hgl</code> file: a readable JSON document containing the family information, every style, every outline point, kerning pairs and metrics.</p>
+        <ul>
+            <li><strong>Ctrl+S</strong> saves to the current path the first time, then silently afterwards.</li>
+            <li><strong>Save Project As…</strong> chooses a new location.</li>
+            <li><strong>Open Project…</strong> (<kbd>Ctrl</kbd>+<kbd>O</kbd>) loads a project; the in-app browser remembers the last folder.</li>
+        </ul>
+        <p>Because the format is plain JSON, you can inspect, diff or back up your work with ordinary tools. Nothing is stored in a database or a cloud account.</p>
+    </section>
+
+    <section id="styles">
+        <h2>Several styles in one family</h2>
+        <p>A family can contain more than one style — Regular, Bold, Italic and so on — each with its own outlines and metrics. Use <strong>Font → Styles and Weights…</strong>, or click the family name in the toolbar.</p>
+        <figure>
+            <img src="screenshots/styles.png" alt="The styles dialog listing the Regular style and an add form">
+            <figcaption>Add a style as a copy of the current one, then reshape it. Glyphs, spacing and kerning start from the original.</figcaption>
+        </figure>
+        <p>When a family has more than one style, the export dialog shows a style selector. Each style is exported as its own font file, with the family and style names written into the <code>name</code> table so text applications group them correctly.</p>
+    </section>
+
+    <div class="pager">
+        <a href="typography.html">← Typography</a>
+        <a href="shortcuts.html">Shortcuts →</a>
+    </div>
+</main>
+
+<footer>
+    Hieroglyph.NET is part of the <a href="https://github.com/OpenCreativeSuite">Open Creative Suite</a>. Free for personal and commercial use.
+</footer>
+</body>
+</html>

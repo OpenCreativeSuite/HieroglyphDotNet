@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Hieroglyph.NET Guide</title>
+    <meta name="description" content="Learn Hieroglyph.NET: a free typeface design application for drawing glyphs, kerning, previewing and exporting real TTF, OTF, WOFF and WOFF2 fonts.">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="topbar">
+    <div class="topbar-inner">
+        <a class="brand" href="index.html">
+            <span class="brand-mark"><span class="bar"></span><span class="dot"></span></span>
+            Hieroglyph.NET Guide
+        </a>
+        <nav class="mainnav">
+            <a class="active" href="index.html">Home</a>
+            <a href="drawing.html">Drawing</a>
+            <a href="typography.html">Typography</a>
+            <a href="exporting.html">Exporting</a>
+            <a href="shortcuts.html">Shortcuts</a>
+            <a href="https://github.com/OpenCreativeSuite/HieroglyphDotNet">GitHub</a>
+        </nav>
+    </div>
+</header>
+
+<main>
+    <section class="hero">
+        <div>
+            <p class="eyebrow">Free typeface design · Windows, Linux, macOS</p>
+            <h1>Design a typeface. Export a real font.</h1>
+            <p class="lead">Draw a shape for every letter, watch the alphabet come together, then export a TTF, OTF, WOFF or WOFF2 file you can install and use anywhere — without an account, a subscription or a font-engineering degree.</p>
+            <div class="cta-row">
+                <a class="btn btn-primary" href="https://github.com/OpenCreativeSuite/HieroglyphDotNet/releases/latest">Download for free</a>
+                <a class="btn btn-quiet" href="#start">Start drawing</a>
+            </div>
+            <p class="hero-note">Everything runs locally. Your fonts never leave your computer.</p>
+        </div>
+        <figure>
+            <img src="screenshots/main.png" alt="The Hieroglyph.NET main window with the letter A being edited">
+            <figcaption>A character browser, a focused tool rail, a large em square with metric guides, an inspector and a live preview dock.</figcaption>
+        </figure>
+    </section>
+
+    <section id="features">
+        <h2>Drawing should feel like drawing</h2>
+        <p>Hieroglyph is built around one loop: pick a character, shape it, see the alphabet, export. The editor stays out of the way, and every visible control is a real one.</p>
+        <div class="grid3">
+            <div class="card">
+                <h3>Brush and pen</h3>
+                <p>Drag freely with the brush and the stroke becomes one smooth, editable outline. Place precise cubic curves with the pen when you want control over every handle.</p>
+            </div>
+            <div class="card">
+                <h3>Guides that mean something</h3>
+                <p>Baseline, x-height, cap height, ascender and descender are drawn on the canvas, with sidebearing shading and a draggable advance width.</p>
+            </div>
+            <div class="card">
+                <h3>See it while you work</h3>
+                <p>A preview dock renders your developing typeface as you type, with size, tracking, leading and a paper or charcoal ground.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="gallery">
+        <h2>A look around</h2>
+        <div class="grid3">
+            <figure>
+                <img src="screenshots/starter.png" alt="A blank character with the starter card offering brush, pen, ellipse, rectangle and copy">
+                <figcaption>A blank character offers a brush, a pen, starter shapes and a template from another glyph.</figcaption>
+            </figure>
+            <figure>
+                <img src="screenshots/brush.png" alt="A freehand brush stroke being painted on the ampersand">
+                <figcaption>The brush previews the exact closed outline it will commit, with an adjustable width in font units.</figcaption>
+            </figure>
+            <figure>
+                <img src="screenshots/alphabet.png" alt="The preview dock showing the full alphabet specimen">
+                <figcaption>The alphabet tab shows upper and lower case, digits, punctuation and common pairs.</figcaption>
+            </figure>
+            <figure>
+                <img src="screenshots/kerning.png" alt="The kerning preview in the bottom dock">
+                <figcaption>Kerning pairs are previewed with the real pair adjustment applied, and exported as kerning data.</figcaption>
+            </figure>
+            <figure>
+                <img src="screenshots/specimen.png" alt="The specimen viewer showing large glyphs and a paragraph">
+                <figcaption>The specimen viewer presents the typeface at several sizes, with a paragraph and the metrics.</figcaption>
+            </figure>
+            <figure>
+                <img src="screenshots/export.png" alt="The export dialog with TTF, OTF, WOFF and WOFF2 choices">
+                <figcaption>Export validates the font in plain language, then writes a working font file.</figcaption>
+            </figure>
+        </div>
+    </section>
+
+    <section id="what">
+        <h2>What you can do</h2>
+        <table>
+            <thead>
+                <tr><th>I want to…</th><th>Hieroglyph can</th></tr>
+            </thead>
+            <tbody>
+                <tr><td>Make my first font</td><td>Start from the included <em>Occam</em> typeface, or from a blank sheet with every standard character ready.</td></tr>
+                <tr><td>Draw a letter quickly</td><td>Drag with the brush (<kbd>B</kbd>) and reshape the resulting outline point by point.</td></tr>
+                <tr><td>Control the curve</td><td>Use the pen (<kbd>P</kbd>) and node tool (<kbd>A</kbd>) with mirrored Bézier handles.</td></tr>
+                <tr><td>Keep spacing consistent</td><td>Set advance width and sidebearings, drag the orange advance line, or centre the outline automatically.</td></tr>
+                <tr><td>Turn a capital into a lowercase</td><td>Copy a character to another code point and reshape it independently.</td></tr>
+                <tr><td>Add é, £, € or an arrow</td><td>Add any Unicode character by typing it or its code point.</td></tr>
+                <tr><td>Fix awkward pairs</td><td>Adjust kerning for AV, WA, To, Ta and any pair you choose, with a live visual preview.</td></tr>
+                <tr><td>Check the whole typeface</td><td>Use the alphabet, text and kerning previews, or open the specimen viewer.</td></tr>
+                <tr><td>Ship it</td><td>Export TTF, OTF, WOFF or WOFF2, then install it on Windows with one click.</td></tr>
+            </tbody>
+        </table>
+    </section>
+
+    <section id="start">
+        <h2>Get started</h2>
+        <ol class="steps">
+            <li><strong>Run it.</strong> Download a release for your platform, or run <code>dotnet run</code> from a checkout with the .NET 10 SDK.</li>
+            <li><strong>Create a font.</strong> Choose <strong>File → New Font…</strong> and give it a family name. Pick “Starter outlines” if you would like a complete alphabet to reshape.</li>
+            <li><strong>Pick a character.</strong> Click any tile in the browser on the left. The dot shows whether it is drawn.</li>
+            <li><strong>Draw it.</strong> Press <kbd>B</kbd> and drag, or press <kbd>P</kbd> and click to place points. Drag the first point onto itself to close a pen contour.</li>
+            <li><strong>Shape it.</strong> Press <kbd>A</kbd> and drag anchors or handles. Shift-drag constrains to one axis; the arrows nudge by 10 units.</li>
+            <li><strong>Preview and export.</strong> Watch the alphabet fill in at the bottom, then press <kbd>Ctrl</kbd>+<kbd>E</kbd> to export.</li>
+        </ol>
+        <div class="tip">
+            <strong>Nothing is permanent</strong>
+            Every stroke, point move, spacing change and kerning edit is undoable. If a first attempt looks wrong, undo and keep going.
+        </div>
+        <figure>
+            <img src="screenshots/welcome.png" alt="The Hieroglyph.NET welcome screen with a live specimen of the starter typeface">
+            <figcaption>The first launch offers a new font, the starter typeface, an existing project — and a live specimen to explore.</figcaption>
+        </figure>
+    </section>
+
+    <section id="shortcuts">
+        <h2>Keyboard shortcuts</h2>
+        <table>
+            <thead><tr><th>Action</th><th>Shortcut</th></tr></thead>
+            <tbody>
+                <tr><td>Selection / Node / Pen / Brush</td><td><kbd>V</kbd> / <kbd>A</kbd> / <kbd>P</kbd> / <kbd>B</kbd></td></tr>
+                <tr><td>Hand / Zoom</td><td><kbd>H</kbd> / <kbd>Z</kbd></td></tr>
+                <tr><td>Previous / next character</td><td><kbd>[</kbd> / <kbd>]</kbd> or <kbd>PageUp</kbd> / <kbd>PageDown</kbd></td></tr>
+                <tr><td>Undo / redo</td><td><kbd>Ctrl</kbd>+<kbd>Z</kbd> / <kbd>Ctrl</kbd>+<kbd>Y</kbd></td></tr>
+                <tr><td>Copy / paste a character</td><td><kbd>Ctrl</kbd>+<kbd>C</kbd> / <kbd>Ctrl</kbd>+<kbd>V</kbd></td></tr>
+                <tr><td>Copy to another character</td><td><kbd>Ctrl</kbd>+<kbd>D</kbd></td></tr>
+                <tr><td>Select every point</td><td><kbd>Ctrl</kbd>+<kbd>A</kbd></td></tr>
+                <tr><td>Delete selected points</td><td><kbd>Delete</kbd></td></tr>
+                <tr><td>Nudge (×1 with Shift)</td><td>Arrow keys</td></tr>
+                <tr><td>Fit / zoom in / zoom out</td><td><kbd>Ctrl</kbd>+<kbd>0</kbd> / <kbd>Ctrl</kbd>+<kbd>=</kbd> / <kbd>Ctrl</kbd>+<kbd>-</kbd></td></tr>
+                <tr><td>New font / open / save / export</td><td><kbd>Ctrl</kbd>+<kbd>N</kbd> / <kbd>O</kbd> / <kbd>S</kbd> / <kbd>E</kbd></td></tr>
+                <tr><td>Pan</td><td>Middle-drag, or <kbd>H</kbd> and drag</td></tr>
+            </tbody>
+        </table>
+        <p><a href="shortcuts.html">See the full shortcut list</a>.</p>
+    </section>
+
+    <section class="promise">
+        <h2>Free, open and private</h2>
+        <p>Hieroglyph is free software. There is no paid tier, no subscription, no account, no advertising and no telemetry. Your project and your exported fonts stay on your computer. The fonts you make are yours to use, sell or give away.</p>
+        <div class="grid3">
+            <div class="card">
+                <h3>Every feature included</h3>
+                <p>Brush, pen, kerning, previews, specimens and every export format, with no feature gates.</p>
+            </div>
+            <div class="card">
+                <h3>Real font files</h3>
+                <p>TrueType outlines, CFF charstrings, kerning tables and web-font containers, written from your outlines.</p>
+            </div>
+            <div class="card">
+                <h3>Yours to keep</h3>
+                <p>Projects are plain <code>.hgl</code> JSON files and exports are ordinary fonts. No lock-in.</p>
+            </div>
+        </div>
+    </section>
+
+    <h2>Run from source</h2>
+    <p>You need the <a href="https://dotnet.microsoft.com/download">.NET 10 SDK</a>.</p>
+    <pre><code>dotnet run</code></pre>
+    <p>The desktop host opens a window. The source layout is described in the repository <a href="https://github.com/OpenCreativeSuite/HieroglyphDotNet#project-layout">README</a>.</p>
+
+    <div class="pager">
+        <a href="drawing.html">Drawing →</a>
+        <a href="typography.html">Typography →</a>
+        <a href="exporting.html">Exporting →</a>
+    </div>
+</main>
+
+<footer>
+    Hieroglyph.NET is part of the <a href="https://github.com/OpenCreativeSuite">Open Creative Suite</a>. Free for personal and commercial use.
+</footer>
+</body>
+</html>

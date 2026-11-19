@@ -36,19 +36,6 @@ internal sealed class GlyphCanvas : Component
         WhiteSpace.NoWrap,
         Direction.LeftToRight);
 
-    private static readonly TextStyle HintStyle = new(
-        "Segoe UI",
-        12f,
-        400,
-        false,
-        0xFF7C8695,
-        0f,
-        15f,
-        TextAlign.Left,
-        TextDecoration.None,
-        WhiteSpace.NoWrap,
-        Direction.LeftToRight);
-
     /// <inheritdoc/>
     public override Node Render()
     {
@@ -260,17 +247,6 @@ internal sealed class GlyphCanvas : Component
                 advance.ToString("0"),
                 new TextStyle("Segoe UI", 10f, 600, false, 0xFFFFB07A, 0f, 12f, TextAlign.Center, TextDecoration.None, WhiteSpace.NoWrap, Direction.LeftToRight));
             context.FillRect(handle.X, handle.Y - 4f, 1f, 8f, Accent);
-        }
-
-        string hint = glyph is null || !glyph.HasOutline
-            ? "Drag with the Brush (B) to paint, or choose a starter shape in the middle of the canvas."
-            : "";
-        if (hint.Length > 0)
-        {
-            context.DrawText(
-                new Rect(14f, canvas.Height - 26f, 560f, 16f),
-                hint,
-                HintStyle);
         }
     }
 

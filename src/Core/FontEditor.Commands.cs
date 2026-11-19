@@ -149,11 +149,9 @@ public sealed partial class FontEditor
 
         if (SelectedContour < 0 || SelectedNodes.Count == 0 || SelectedContour >= glyph.Contours.Count)
         {
-            if (glyph.HasOutline)
-            {
-                ClearGlyph();
-            }
-
+            NotifyStatus(glyph.HasOutline
+                ? "Select points to delete, or use Clear Character to start over."
+                : "Nothing to delete.");
             return;
         }
 

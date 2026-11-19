@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Typography — Hieroglyph.NET Guide</title>
+    <meta name="description" content="Preview live text, the full alphabet and kerning in Hieroglyph.NET, and present the typeface with the specimen viewer.">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="topbar">
+    <div class="topbar-inner">
+        <a class="brand" href="index.html">
+            <span class="brand-mark"><span class="bar"></span><span class="dot"></span></span>
+            Hieroglyph.NET Guide
+        </a>
+        <nav class="mainnav">
+            <a href="index.html">Home</a>
+            <a href="drawing.html">Drawing</a>
+            <a class="active" href="typography.html">Typography</a>
+            <a href="exporting.html">Exporting</a>
+            <a href="shortcuts.html">Shortcuts</a>
+            <a href="https://github.com/OpenCreativeSuite/HieroglyphDotNet">GitHub</a>
+        </nav>
+    </div>
+</header>
+
+<main>
+    <div class="pagehead">
+        <h1>Typography, previews and kerning</h1>
+        <p>A typeface is more than a set of drawings. Hieroglyph shows the letters working as text while you edit, so spacing problems surface immediately.</p>
+    </div>
+
+    <div class="toc">
+        <strong>On this page</strong>
+        <ol>
+            <li><a href="#dock">The preview dock</a></li>
+            <li><a href="#tabs">Text, alphabet and kerning tabs</a></li>
+            <li><a href="#specimen">The specimen viewer</a></li>
+            <li><a href="#kerning">The kerning editor</a></li>
+        </ol>
+    </div>
+
+    <section id="dock">
+        <h2>The preview dock</h2>
+        <p>The bottom of the window renders your developing typeface with the same outlines the editor is using — no compilation step and no installed font required. It updates as you move a point.</p>
+        <figure>
+            <img src="screenshots/main.png" alt="The preview dock under the canvas showing the word Handgloves">
+            <figcaption>The dock sits under the canvas and can be collapsed to give the drawing area more room.</figcaption>
+        </figure>
+        <ul>
+            <li><strong>Sample text</strong> — type anything. The font's own sample sentence is used when the field is empty.</li>
+            <li><strong>Size</strong> — from 12 to 180 pixels.</li>
+            <li><strong>Tracking</strong> — extra space between every pair, from −80 to 200 thousandths of an em.</li>
+            <li><strong>Leading</strong> — line spacing from 0.8 to 2.4 times the size.</li>
+            <li><strong>Ink and ground</strong> — switch between dark ink on paper and light ink on charcoal.</li>
+            <li><strong>Collapse</strong> — the chevron hides the dock; the toolbar button beside the style switcher brings it back.</li>
+        </ul>
+    </section>
+
+    <section id="tabs">
+        <h2>Text, alphabet and kerning tabs</h2>
+        <h3>Text</h3>
+        <p>Wraps your sample through the dock at the chosen size, tracking and leading, in the same colours as the final specimen. Blank characters leave a visible gap, which makes missing glyphs easy to spot.</p>
+
+        <h3>Alphabet</h3>
+        <figure>
+            <img src="screenshots/alphabet.png" alt="The alphabet tab showing upper case, lower case, digits and punctuation">
+            <figcaption>Upper case, lower case, digits and punctuation at sizes suited to each, with a kerning line at the bottom.</figcaption>
+        </figure>
+
+        <h3>Kerning</h3>
+        <figure>
+            <img src="screenshots/kerning.png" alt="The kerning tab showing common pairs rendered with kerning">
+            <figcaption>Common pairs rendered with the adjustments you have set. The inspector has the full editor.</figcaption>
+        </figure>
+    </section>
+
+    <section id="specimen">
+        <h2>The specimen viewer</h2>
+        <p><strong>View → Specimen Viewer…</strong> presents the typeface the way a designer would show it: a large <em>Aa</em>, both alphabets, digits, punctuation, a paragraph and the metrics.</p>
+        <figure>
+            <img src="screenshots/specimen.png" alt="The specimen sheet with a large Aa, alphabet, paragraph and metrics">
+            <figcaption>A presentation sheet with a custom sample line and a direct Export button.</figcaption>
+        </figure>
+        <p>The sample-text field at the top of the specimen overrides the family sample, and the header's Export button opens the export dialog without leaving the sheet.</p>
+    </section>
+
+    <section id="kerning">
+        <h2>The kerning editor</h2>
+        <p>Kerning is the adjustment of space between specific pairs. Open <strong>Kerning</strong> in the inspector on the right.</p>
+        <table>
+            <thead><tr><th>Control</th><th>What it does</th></tr></thead>
+            <tbody>
+                <tr><td>Pair preview</td><td>Shows the two characters at a large size with the current adjustment applied and the advance gap marked.</td></tr>
+                <tr><td>Value field</td><td>The adjustment in font units. Negative pulls the pair together, positive pushes it apart.</td></tr>
+                <tr><td>− / + buttons</td><td>Nudge the pair by five units for quick judgement.</td></tr>
+                <tr><td>Suggested pairs</td><td>AV, VA, WA, AW, To, Ta, Yo and LT, the pairs most typefaces need first.</td></tr>
+                <tr><td>Pair list</td><td>Every pair in the style. Click a row to preview it, or remove it with the ×.</td></tr>
+                <tr><td>Add a pair</td><td>Type the two characters and a value to create any pair.</td></tr>
+            </tbody>
+        </table>
+        <div class="note">
+            <strong>Kerning ships with the font</strong>
+            Exported fonts include both a legacy <code>kern</code> table and an OpenType <code>GPOS</code> pair-positioning lookup, so the spacing works in desktop software and on the web.
+        </div>
+        <div class="tip">
+            <strong>Start with the diagonals</strong>
+            Capitals with diagonal strokes — A, V, W, Y — look too loose without kerning. Fix those six or eight pairs and the typeface immediately reads better.
+        </div>
+    </section>
+
+    <div class="pager">
+        <a href="drawing.html">← Drawing</a>
+        <a href="exporting.html">Exporting →</a>
+    </div>
+</main>
+
+<footer>
+    Hieroglyph.NET is part of the <a href="https://github.com/OpenCreativeSuite">Open Creative Suite</a>. Free for personal and commercial use.
+</footer>
+</body>
+</html>

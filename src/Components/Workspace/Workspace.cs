@@ -97,8 +97,8 @@ internal sealed class Workspace : Component
                                 GlyphTool.Brush => "Drag to paint a stroke · B",
                                 GlyphTool.Pen => "Click to place points, drag to curve · P",
                                 _ => glyph?.HasOutline == true
-                                    ? "Drag a point to shape it"
-                                    : "The em square is 1000 units tall",
+                                    ? session.Tool == GlyphTool.Node ? "Drag a point to shape it" : "Drag to move the character"
+                                    : "Choose a starter shape, or press B to paint",
                             }))))));
     }
 
@@ -173,7 +173,7 @@ internal sealed class StarterCard : Component
         Div(new() { ClassName = "starter-title" },
             Text(glyph is null ? "Pick a character" : $"{glyph.Character} is waiting")),
         Div(new() { ClassName = "starter-copy" },
-            Text("Draw it with the pen, drop in a shape and reshape it, or copy a character you have already made.")),
+            Text("Paint it with the brush, place points with the pen, or copy a character you have already made and reshape it.")),
         Div(new() { ClassName = "starter-actions" },
             Button(new()
             {
@@ -191,6 +191,8 @@ internal sealed class StarterCard : Component
                 Ui.Icon("fa-circle"), Text("Ellipse")),
             Button(new() { ClassName = "starter-button", OnClick = session.AddStarterRectangle },
                 Ui.Icon("fa-square"), Text("Rectangle")),
+            Button(new() { ClassName = "starter-button", OnClick = session.AddStarterStem },
+                Ui.Icon("fa-slash"), Text("Stem")),
             Button(new() { ClassName = "starter-button", OnClick = session.OpenDuplicateDialog },
                 Ui.Icon(Icons.Duplicate), Text("Copy a character"))),
         Div(new() { ClassName = "starter-foot" },
