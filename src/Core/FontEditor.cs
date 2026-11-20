@@ -327,7 +327,11 @@ public sealed partial class FontEditor
             SelectedNodes.Clear();
         }
 
-        SelectedNodes.Add(node);
+        if (node >= 0)
+        {
+            SelectedNodes.Add(node);
+        }
+
         Notify();
     }
 

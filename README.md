@@ -107,6 +107,22 @@ The illustrated guide lives in [`docs/`](docs/index.html) and is published at:
 
 It covers drawing, typography and previews, exporting and installing, the full shortcut list, and how to build from source.
 
+## Build and test
+
+Build the application with the .NET 10 SDK:
+
+```sh
+dotnet build HieroglyphDotNet.csproj
+```
+
+Run the unit tests with:
+
+```sh
+dotnet test tests/HieroglyphDotNet.Tests/HieroglyphDotNet.Tests.csproj
+```
+
+The test project covers the geometry and glyph model, outlines and rasterisation, validation, project files, all four export formats, and every editor command and interface component.
+
 ## Project layout
 
 ```
@@ -123,8 +139,9 @@ src/Core/                      documents, geometry, editing, font compilation
   DemoFont.cs                  the Occam starter typeface
 src/Components/                chrome, browser, canvas, inspector, preview, dialogs
 src/Components/App/App.css     the entire visual identity
+tests/HieroglyphDotNet.Tests/  xUnit coverage of the engine and the interface
 docs/                          user guide and screenshots
-.github/workflows/             GitHub Pages and cross-platform release builds
+.github/workflows/             tests, GitHub Pages and cross-platform release builds
 ```
 
 The font compiler and the glyph model are independent of the UI. Glyph rendering uses a custom anti-aliased scanline rasteriser, and export writes every table the formats need from the same outlines the editor draws.

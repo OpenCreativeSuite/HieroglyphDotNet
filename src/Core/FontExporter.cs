@@ -90,8 +90,26 @@ public static class FontExporter
     /// <summary>The PostScript name written to the name table.</summary>
     public static string PostScriptName(FontProject project, FontStyle style)
     {
+        string family = CleanName(project.FamilyName);
+        string styleName = CleanName(style.Name);
+        if (!family.Any(char.IsLetterOrDigit))
+        {
+            family = "Untitled";
+        }
+
+        if (!styleName.Any(char.IsLetterOrDigit))
+        {
+            styleName = "Regular";
+        }
+
+        string name = family + "-" + styleName;
+        return name.Length > 60 ? name[..60] : name;
+    }
+
+    private static string CleanName(string text)
+    {
         StringBuilder builder = new();
-        foreach (char c in project.FamilyName + "-" + style.Name)
+        foreach (char c in text)
         {
             if (char.IsLetterOrDigit(c) || c is '-' or '.')
             {
@@ -99,13 +117,7 @@ public static class FontExporter
             }
         }
 
-        string name = builder.ToString().Replace(" ", "");
-        if (name.Length == 0)
-        {
-            name = "Untitled-Regular";
-        }
-
-        return name.Length > 60 ? name[..60] : name;
+        return builder.ToString().Replace(" ", "");
     }
 
     private static List<SfntTable> BuildTables(FontProject project, FontStyle style, bool cff)

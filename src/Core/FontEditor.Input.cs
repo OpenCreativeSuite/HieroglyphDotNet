@@ -128,7 +128,7 @@ public sealed partial class FontEditor
                 return;
             }
 
-            if (_dragHit.Kind is HitKind.Node or HitKind.HandleIn or HitKind.HandleOut or HitKind.Contour)
+            if (_dragHit.Kind is HitKind.Node or HitKind.HandleIn or HitKind.HandleOut)
             {
                 // Selecting a node from the selection tool switches to node
                 // editing, which is what a beginner expects from a click.
@@ -330,6 +330,12 @@ public sealed partial class FontEditor
         if (_dragMode == DragMode.Brush)
         {
             CommitBrush();
+            _dragMode = DragMode.None;
+            _dragOriginalNode = null;
+            _dragOriginalShape = null;
+            _penNode = -1;
+            Notify();
+            return;
         }
 
         _dragMode = DragMode.None;
@@ -858,7 +864,6 @@ public sealed partial class FontEditor
             _dragMode = DragMode.None;
         }
 
-        UpdateStatus();
         Notify();
     }
 
