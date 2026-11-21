@@ -84,10 +84,23 @@ button {
     line-height: normal;
     color: var(--text);
     background-color: transparent;
+    background-image: none;
+    box-shadow: none;
+    height: auto;
+    padding: 0;
     border: 0;
     border-radius: var(--radius-sm);
     margin: 0;
     cursor: pointer;
+}
+
+/* The native hover/active rules are more specific than the base reset, so clear
+   their paint with an equal-specificity rule. Only the UA-only chrome (gradient +
+   inset shadow) is stripped here; component hover rules are boosted below. */
+button:enabled:hover,
+button:enabled:active {
+    background-image: none;
+    box-shadow: none;
 }
 
 button:disabled {
@@ -238,7 +251,7 @@ canvas {
     border-radius: 4px;
 }
 
-.menu-title:hover {
+button.menu-title:hover, .menu-title:hover {
     background-color: var(--bg-hover);
     color: var(--text-strong);
 }
@@ -271,7 +284,7 @@ canvas {
     text-align: left;
 }
 
-.menu-item:hover {
+button.menu-item:hover, .menu-item:hover {
     background-color: var(--accent);
     color: var(--accent-ink);
 }
@@ -280,7 +293,7 @@ canvas {
     color: var(--text-faint);
 }
 
-.menu-item:disabled:hover {
+button.menu-item:disabled:hover, .menu-item:disabled:hover {
     background-color: transparent;
     color: var(--text-faint);
 }
@@ -411,7 +424,7 @@ canvas {
     white-space: nowrap;
 }
 
-.tb-action:hover {
+button.tb-action:hover, .tb-action:hover {
     background-color: var(--bg-hover);
     border-color: var(--line-strong);
     color: var(--text-strong);
@@ -428,7 +441,7 @@ canvas {
     font-weight: 600;
 }
 
-.tb-action.is-primary:hover {
+button.tb-action.is-primary:hover, .tb-action.is-primary:hover {
     background-color: var(--accent-strong);
     border-color: var(--accent-strong);
     color: var(--accent-ink);
@@ -453,7 +466,7 @@ canvas {
     flex-shrink: 0;
 }
 
-.icon-btn:hover {
+button.icon-btn:hover, .icon-btn:hover {
     background-color: var(--bg-hover);
     border-color: var(--line-strong);
     color: var(--text-strong);
@@ -469,7 +482,7 @@ canvas {
     color: #4c545f;
 }
 
-.icon-btn:disabled:hover {
+button.icon-btn:disabled:hover, .icon-btn:disabled:hover {
     background-color: transparent;
     border-color: transparent;
     color: #4c545f;
@@ -489,7 +502,7 @@ canvas {
     flex-shrink: 0;
 }
 
-.mini-btn:hover {
+button.mini-btn:hover, .mini-btn:hover {
     background-color: var(--bg-hover);
     color: var(--text-strong);
 }
@@ -504,7 +517,7 @@ canvas {
     color: #4c545f;
 }
 
-.mini-btn:disabled:hover {
+button.mini-btn:disabled:hover, .mini-btn:disabled:hover {
     background-color: transparent;
     color: #4c545f;
 }
@@ -537,7 +550,7 @@ canvas {
     font-variant-numeric: tabular-nums;
 }
 
-.zoom-value:hover {
+button.zoom-value:hover, .zoom-value:hover {
     color: var(--text-strong);
 }
 
@@ -554,7 +567,7 @@ canvas {
     overflow: hidden;
 }
 
-.style-switcher:hover {
+button.style-switcher:hover, .style-switcher:hover {
     border-color: var(--line-strong);
     background-color: #191d23;
 }
@@ -674,7 +687,7 @@ canvas {
     overflow: hidden;
 }
 
-.chip:hover {
+button.chip:hover, .chip:hover {
     background-color: var(--bg-hover);
     color: var(--text);
 }
@@ -725,7 +738,7 @@ canvas {
     overflow: hidden;
 }
 
-.char-tile:hover {
+button.char-tile:hover, .char-tile:hover {
     background-color: #1d2128;
     border-color: var(--line-strong);
 }
@@ -816,7 +829,7 @@ canvas {
     font-size: 11px;
 }
 
-.browser-add:hover {
+button.browser-add:hover, .browser-add:hover {
     background-color: var(--bg-hover);
     color: var(--text-strong);
 }
@@ -1026,7 +1039,7 @@ canvas {
     position: relative;
 }
 
-.tool-btn:hover {
+button.tool-btn:hover, .tool-btn:hover {
     background-color: var(--bg-hover);
     color: var(--text-strong);
 }
@@ -1147,7 +1160,7 @@ canvas {
     pointer-events: auto;
 }
 
-.starter-button:hover {
+button.starter-button:hover, .starter-button:hover {
     background-color: var(--bg-hover);
     color: var(--text-strong);
 }
@@ -1159,7 +1172,7 @@ canvas {
     font-weight: 600;
 }
 
-.starter-button.is-primary:hover {
+button.starter-button.is-primary:hover, .starter-button.is-primary:hover {
     background-color: var(--accent-strong);
     border-color: var(--accent-strong);
 }
@@ -1250,7 +1263,7 @@ canvas {
     cursor: pointer;
 }
 
-.panel-head:hover {
+button.panel-head:hover, .panel-head:hover {
     background-color: #20242b;
 }
 
@@ -1360,7 +1373,7 @@ canvas {
     font-variant-numeric: tabular-nums;
 }
 
-.num-field:hover {
+button.num-field:hover, .num-field:hover {
     border-color: var(--line-strong);
 }
 
@@ -1437,7 +1450,14 @@ canvas {
     font-variant-numeric: tabular-nums;
 }
 
-.slider-input {
+/* The default sheet's input[type="range"] rule is one specificity step above a
+   plain class, so name the element here and restate the reset globally. */
+input[type="range"] {
+    margin: 0;
+    background-color: transparent;
+}
+
+input.slider-input {
     width: 100%;
     height: 18px;
     min-height: 18px;
@@ -1493,7 +1513,7 @@ canvas {
     text-overflow: ellipsis;
 }
 
-.choice:hover {
+button.choice:hover, .choice:hover {
     background-color: var(--bg-hover);
     color: var(--text);
 }
@@ -1517,7 +1537,7 @@ canvas {
     font-size: 10.5px;
 }
 
-.btn-tiny:hover {
+button.btn-tiny:hover, .btn-tiny:hover {
     background-color: var(--bg-hover);
     color: var(--text-strong);
 }
@@ -1655,7 +1675,7 @@ canvas {
     letter-spacing: 0.03em;
 }
 
-.kern-chip:hover {
+button.kern-chip:hover, .kern-chip:hover {
     border-color: var(--line-strong);
     color: var(--text-strong);
 }
@@ -1689,7 +1709,7 @@ canvas {
     cursor: pointer;
 }
 
-.kern-row:hover {
+button.kern-row:hover, .kern-row:hover {
     background-color: var(--bg-hover);
 }
 
@@ -1721,7 +1741,7 @@ canvas {
     border-radius: 3px;
 }
 
-.kern-row-remove:hover {
+button.kern-row-remove:hover, .kern-row-remove:hover {
     background-color: rgba(229, 72, 77, 0.18);
     color: #ff8f92;
 }
@@ -1781,7 +1801,7 @@ canvas {
     font-size: 11px;
 }
 
-.preview-tab:hover {
+button.preview-tab:hover, .preview-tab:hover {
     color: var(--text);
 }
 
@@ -2052,7 +2072,7 @@ canvas {
     font-size: 12px;
 }
 
-.btn:hover {
+button.btn:hover, .btn:hover {
     background-color: var(--bg-hover);
     color: var(--text-strong);
 }
@@ -2064,7 +2084,7 @@ canvas {
     font-weight: 600;
 }
 
-.btn.is-primary:hover {
+button.btn.is-primary:hover, .btn.is-primary:hover {
     background-color: var(--accent-strong);
     border-color: var(--accent-strong);
 }
@@ -2110,7 +2130,7 @@ canvas {
     cursor: pointer;
 }
 
-.template-card:hover {
+button.template-card:hover, .template-card:hover {
     background-color: #1b1f25;
     border-color: var(--line-strong);
 }
@@ -2166,7 +2186,7 @@ canvas {
     overflow: hidden;
 }
 
-.format-card:hover {
+button.format-card:hover, .format-card:hover {
     background-color: #1b1f25;
     border-color: var(--line-strong);
 }
@@ -2228,7 +2248,7 @@ canvas {
     border-radius: var(--radius-sm);
 }
 
-.issue-row:hover {
+button.issue-row:hover, .issue-row:hover {
     background-color: rgba(255, 255, 255, 0.02);
 }
 
@@ -2454,7 +2474,7 @@ canvas {
     cursor: pointer;
 }
 
-.style-row:hover {
+button.style-row:hover, .style-row:hover {
     background-color: #1b1f25;
     border-color: var(--line-strong);
 }
@@ -2592,7 +2612,7 @@ kbd {
     font-size: 15px;
 }
 
-.dup-cell:hover {
+button.dup-cell:hover, .dup-cell:hover {
     background-color: var(--accent-soft);
     border-color: var(--accent-line);
     color: var(--accent-strong);
@@ -2604,7 +2624,7 @@ kbd {
     border-color: transparent;
 }
 
-.dup-cell.is-full:hover {
+button.dup-cell.is-full:hover, .dup-cell.is-full:hover {
     color: var(--warn);
     border-color: rgba(245, 165, 36, 0.4);
 }
@@ -2800,7 +2820,7 @@ kbd {
     font-size: 10.5px;
 }
 
-.file-place:hover {
+button.file-place:hover, .file-place:hover {
     background-color: var(--bg-hover);
     color: var(--text-strong);
 }
@@ -2827,7 +2847,7 @@ kbd {
     flex-shrink: 0;
 }
 
-.file-row:hover {
+button.file-row:hover, .file-row:hover {
     background-color: #272c33;
 }
 
@@ -3017,7 +3037,7 @@ kbd {
     font-size: 12px;
 }
 
-.welcome-btn:hover {
+button.welcome-btn:hover, .welcome-btn:hover {
     background-color: var(--bg-hover);
     color: var(--text-strong);
 }
@@ -3029,7 +3049,7 @@ kbd {
     font-weight: 650;
 }
 
-.welcome-btn.is-primary:hover {
+button.welcome-btn.is-primary:hover, .welcome-btn.is-primary:hover {
     background-color: var(--accent-strong);
     border-color: var(--accent-strong);
 }
@@ -3046,7 +3066,7 @@ kbd {
     font-size: 11.5px;
 }
 
-.welcome-link:hover {
+button.welcome-link:hover, .welcome-link:hover {
     color: var(--accent-strong);
 }
 
